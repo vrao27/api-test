@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3000/MyRecipes").then(({ data }) => {
+    axios.get("http://localhost:8000/MyRecipes").then(({ data }) => {
       console.log(" ", data);
       setData(data);
     });
@@ -15,7 +15,11 @@ function App() {
 
   if (!data) return "Loading...";
   return (
-    <div className="App">{data?.entries[0].fields?.description["en-US"]}</div>
+    <>
+      {" "}
+      <div className="App">{data.rows[1].description}</div>
+    </>
+    // this is forf contentful<div className="App">{data?.entries[0].fields?.description["en-US"]}</div>
   );
 }
 
